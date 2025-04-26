@@ -1,0 +1,16 @@
+admission_id,patient_id,ward,reason,admission_time,discharge_date
+A1001,P001,Cardiology,BP spike,3/10/2025 9:30:00,3/13/2025
+A1002,P002,General,High fever & weakness,4/1/2025 14:00:00,4/6/2025
+A1003,P003,Endocrine,Blood sugar complications,2/19/2025 11:45:00,
+A1004,P004,ICU,Irregular heartbeat,4/7/2025 3:00:00,
+A1005,P005,Ortho,Road accident,3/25/2025 18:30:00,3/30/2025
+A1006,P006,General,Respiratory infection,3/15/2025 10:20:00,3/21/2025
+A1007,P007,Pediatrics,"Fever, dehydration",4/2/2025 7:45:00,4/4/2025
+A1008,P008,Neuro,Chronic migraine episode,3/5/2025 12:00:00,
+A1009,P009,Nephro,Kidney failure,3/22/2025 20:00:00,
+A1010,P010,Ortho,Joint pain & stiffness,2/10/2025 9:00:00,
+A1011,P011,Pulmo,Breathing difficulty,4/5/2025 17:00:00,4/9/2025
+A1012,P012,General,"Abdominal pain, diarrhea",3/28/2025 11:15:00,3/31/2025
+A1013,P013,SportsMed,ACL tear during game,4/3/2025 16:00:00,4/7/2025
+A1014,P014,Geriatrics,Memory loss & confusion,1/18/2025 8:45:00,
+A1015,P015,Neuro,Neck pain & nerve pressure,3/11/2025 13:30:00,
