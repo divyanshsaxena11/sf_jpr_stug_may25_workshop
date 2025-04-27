@@ -1,0 +1,361 @@
+name: patient_report
+tables:
+  - name: WARD_OCCUPANCY
+    base_table:
+      database: HOSPITAL_CHALLENGES_TUTORIAL_DB
+      schema: PUBLIC
+      table: WARD_OCCUPANCY
+    dimensions:
+      - name: WARD_NAME
+        expr: WARD_NAME
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - ICU
+          - General
+          - Cardiology
+        description: The type of ward where a patient is being treated, such as Intensive Care Unit (ICU), General ward, or Cardiology ward.
+        synonyms:
+          - ward_title
+          - department_name
+          - unit_name
+          - hospital_section
+          - facility_name
+          - care_unit
+          - ward_label
+    facts:
+      - name: BEDS_TOTAL
+        expr: BEDS_TOTAL
+        data_type: NUMBER(2,0)
+        sample_values:
+          - '18'
+          - '23'
+          - '15'
+        description: Total number of beds available in a ward.
+        synonyms:
+          - total_beds
+          - total_bed_count
+          - bed_capacity
+          - max_beds
+          - total_bed_number
+      - name: BEDS_OCCUPIED
+        expr: BEDS_OCCUPIED
+        data_type: NUMBER(2,0)
+        sample_values:
+          - '16'
+          - '19'
+          - '7'
+        description: The number of beds currently occupied by patients in a ward.
+        synonyms:
+          - occupied_beds
+          - beds_in_use
+          - utilized_beds
+          - filled_beds
+          - beds_taken
+  - name: PATIENT_REPORT
+    base_table:
+      database: HOSPITAL_CHALLENGES_TUTORIAL_DB
+      schema: PUBLIC
+      table: PATIENT_REPORT
+    dimensions:
+      - name: PATIENT_ID
+        expr: PATIENT_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - P001
+          - P003
+          - P002
+        description: Unique identifier for each patient in the report.
+        synonyms:
+          - patient_number
+          - patient_code
+          - person_id
+          - individual_id
+          - medical_record_number
+          - unique_patient_identifier
+      - name: NAME
+        expr: NAME
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Rohan Mehta
+          - Ananya Sharma
+          - Rajat Kapoor
+        description: The name of the patient.
+        synonyms:
+          - full_name
+          - patient_name
+          - person_name
+          - individual_name
+          - patient_full_name
+      - name: CONDITION
+        expr: CONDITION
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Hypertension
+          - Dengue
+          - Diabetes
+        description: The medical condition diagnosed or being treated in the patient.
+        synonyms:
+          - disease
+          - disorder
+          - illness
+          - sickness
+          - affliction
+          - ailment
+          - medical_condition
+          - diagnosis
+      - name: STATUS
+        expr: STATUS
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Recovering
+          - Discharged
+          - Ongoing
+        description: The current status of the patient's treatment or condition, indicating whether they are still receiving care (Ongoing), have been released from care (Discharged), or are in the process of recovering from their condition (Recovering).
+        synonyms:
+          - condition
+          - state
+          - health_status
+          - patient_status
+          - medical_status
+          - current_status
+          - patient_condition
+          - health_condition
+      - name: ADMISSION_ID
+        expr: ADMISSION_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - A1001
+          - A1002
+          - A1003
+        description: Unique identifier assigned to a patient upon admission to the hospital or healthcare facility.
+        synonyms:
+          - admit_id
+          - patient_admission_number
+          - hospital_admission_id
+          - admission_number
+          - patient_id_number
+          - admit_number
+      - name: WARD
+        expr: WARD
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Cardiology
+          - General
+          - Endocrine
+        description: The department or unit within the hospital where the patient is being treated.
+        synonyms:
+          - department
+          - unit
+          - section
+          - floor
+          - wing
+          - block
+          - area
+          - division
+      - name: REASON
+        expr: REASON
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - BP spike
+          - High fever & weakness
+          - Irregular heartbeat
+        description: The reason for the patient's visit or hospitalization, as reported by the patient or their healthcare provider.
+        synonyms:
+          - explanation
+          - cause
+          - justification
+          - motive
+          - admission_reason
+          - description
+          - rationale
+          - basis
+          - ground
+      - name: NOTE_ID
+        expr: NOTE_ID
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - N001
+          - N002
+          - N003
+        description: Unique identifier for a patient's medical note or report.
+        synonyms:
+          - note_number
+          - note_reference
+          - note_identifier
+          - note_code
+          - note_key
+      - name: NOTE_TEXT
+        expr: NOTE_TEXT
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Patient reported dizziness and blurry vision. BP was 190/110 mmHg.
+          - Platelet count critically low. Started IV fluids and antipyretics.
+          - Blood sugar spiked to 320 mg/dL. Adjusted insulin dosage.
+        description: Free-text notes and comments from healthcare providers regarding a patient's condition, treatment, and test results.
+        synonyms:
+          - note_description
+          - note_comment
+          - patient_note
+          - clinical_note
+          - medical_comment
+          - doctor_note
+          - nurse_note
+          - patient_comment
+          - medical_note_text
+      - name: DRUG_NAME
+        expr: DRUG_NAME
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Omeprazole
+          - Insulin
+          - Paracetamol
+        description: The name of the medication or drug prescribed to the patient.
+        synonyms:
+          - medication_name
+          - medicine_name
+          - prescription_name
+          - treatment_name
+          - pharmaceutical_name
+          - drug_description
+      - name: OUTCOME
+        expr: OUTCOME
+        data_type: VARCHAR(16777216)
+        sample_values:
+          - Recovered
+          - Improved
+          - No Change
+        description: The outcome of the patient's treatment or condition, indicating whether they have Recovered, shown Improvement, or experienced No Change.
+        synonyms:
+          - result
+          - outcome_status
+          - treatment_result
+          - patient_result
+          - final_status
+          - conclusion
+          - end_result
+          - disposition
+    time_dimensions:
+      - name: ADMISSION_TIME
+        expr: ADMISSION_TIME
+        data_type: TIMESTAMP_NTZ(9)
+        sample_values:
+          - 2025-03-10T09:30:00.000+0000
+          - 2025-04-01T14:00:00.000+0000
+          - 2025-02-19T11:45:00.000+0000
+        description: The date and time when the patient was admitted to the hospital.
+        synonyms:
+          - admit_time
+          - admission_date
+          - entry_time
+          - entry_date
+          - intake_time
+          - intake_date
+          - admission_start_time
+          - start_date
+          - arrival_time
+          - arrival_date
+      - name: DISCHARGE_DATE
+        expr: DISCHARGE_DATE
+        data_type: DATE
+        sample_values:
+          - '2025-03-13'
+          - '2025-04-06'
+        description: Date on which the patient was discharged from the healthcare facility.
+        synonyms:
+          - release_date
+          - departure_date
+          - exit_date
+          - checkout_date
+          - end_of_stay_date
+          - date_of_discharge
+      - name: START_DATE
+        expr: START_DATE
+        data_type: DATE
+        sample_values:
+          - '2025-03-31'
+          - '2025-03-28'
+          - '2025-03-18'
+        description: The date on which the patient's report was started.
+        synonyms:
+          - initiation_date
+          - beginning_date
+          - commencement_date
+          - drug_start_time
+          - initial_date
+          - inception_date
+          - kickoff_date
+      - name: END_DATE
+        expr: END_DATE
+        data_type: DATE
+        sample_values:
+          - '2025-04-08'
+          - '2025-04-06'
+          - '2025-03-28'
+        description: The date on which the patient's report was completed or the treatment was ended.
+        synonyms:
+          - completion_date
+          - termination_date
+          - expiration_date
+          - end_time
+          - finish_date
+          - closing_date
+          - termination_time
+    facts:
+      - name: AGE
+        expr: AGE
+        data_type: NUMBER(2,0)
+        sample_values:
+          - '45'
+          - '30'
+          - '63'
+        description: The age of the patient at the time of the report, in years.
+        synonyms:
+          - years_old
+          - years_of_age
+          - age_in_years
+          - patient_age
+          - years_lived
+verified_queries:
+  - name: average age of patients by ward
+    question: What is the average age of patients by ward in our hospital?
+    use_as_onboarding_question: false
+    sql: SELECT ward, AVG(age) AS avg_age FROM patient_report GROUP BY ward ORDER BY avg_age DESC NULLS LAST
+    verified_by: Divyansh Saxena
+    verified_at: 1745471344
+  - name: heart related issues patients count by ward
+    question: How many patients currently have notes containing the words on heart related issues in their note_text, broken down by ward?
+    use_as_onboarding_question: false
+    sql: SELECT ward, COUNT(DISTINCT patient_id) AS patient_count FROM patient_report WHERE note_text ILIKE '%heart%' OR note_text ILIKE '%cardia%' GROUP BY ward ORDER BY patient_count DESC NULLS LAST
+    verified_by: Divyansh Saxena
+    verified_at: 1745472033
+  - name: hospitalized patients with fractures
+    question: Total patients with fractures
+    use_as_onboarding_question: true
+    sql: SELECT COUNT(DISTINCT patient_id) FROM patient_report WHERE LOWER(condition) LIKE '%fracture%' OR note_text ILIKE '%fracture%'
+    verified_by: Divyansh Saxena
+    verified_at: 1745472213
+  - name: success rates for drugs
+    question: what are the success rate of drugs?
+    use_as_onboarding_question: true
+    sql: WITH drug_outcomes AS (SELECT drug_name, MIN(start_date) AS start_date, MAX(end_date) AS end_date, COUNT(*) AS total_patients, COUNT(CASE WHEN outcome IN ('Recovered', 'Improved') THEN 1 END) AS successful_treatments FROM patient_report GROUP BY drug_name) SELECT drug_name, start_date, end_date, CAST(successful_treatments AS FLOAT) / NULLIF(NULLIF(total_patients, 0), 0) AS success_rate FROM drug_outcomes WHERE NOT drug_name IS NULL ORDER BY success_rate DESC NULLS LAST
+    verified_by: Divyansh Saxena
+    verified_at: 1745472554
+  - name: medicine provided to an individual
+    question: what medicines are prescribed to Sneha?
+    use_as_onboarding_question: true
+    sql: SELECT DISTINCT drug_name FROM patient_report WHERE name ILIKE '%Sneha%'
+    verified_by: Divyansh Saxena
+    verified_at: 1745473147
+  - name: patients in same ward based on same drugs provided
+    question: For patients who are prescribed any of the same medications as Ananya Sharma, are they located in the same ward as Ananya Sharma?
+    use_as_onboarding_question: false
+    sql: WITH ananya_meds AS (SELECT DISTINCT drug_name, ward FROM patient_report WHERE name ILIKE '%Ananya Sharma%'), other_patients AS (SELECT DISTINCT pr.name, pr.ward, pr.drug_name FROM patient_report AS pr JOIN ananya_meds AS am ON pr.drug_name = am.drug_name WHERE NOT pr.name ILIKE '%Ananya Sharma%') SELECT op.name, op.ward, op.drug_name, CASE WHEN op.ward = (SELECT ward FROM ananya_meds LIMIT 1) THEN 'Yes' ELSE 'No' END AS same_ward FROM other_patients AS op ORDER BY op.name
+    verified_by: Divyansh Saxena
+    verified_at: 1745473764
+  - name: drugs recovery rate from last 30 days
+    question: What antibiotic has the highest percentage of patients with 'Recovered' outcome status in the last 30 days?
+    use_as_onboarding_question: false
+    sql: WITH drug_outcomes AS (SELECT drug_name, COUNT(DISTINCT patient_id) AS total_patients, COUNT(DISTINCT CASE WHEN outcome = 'Recovered' THEN patient_id END) AS recovered_patients FROM patient_report WHERE end_date >= DATEADD(DAY, -30, CURRENT_DATE) GROUP BY drug_name) SELECT drug_name, (CAST(recovered_patients AS FLOAT) / NULLIF(NULLIF(total_patients, 0), 0) * 100) AS recovery_rate FROM drug_outcomes ORDER BY recovery_rate DESC NULLS LAST LIMIT 1
+    verified_by: Divyansh Saxena
+    verified_at: 1745474425
+custom_instructions: For any percentage or rate calculation, multiply the result by 100. Ensure that all numeric columns are rounded to 2 decimal points in the output.
