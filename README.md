@@ -1,5 +1,8 @@
 # 🏥 Hospital Intelligence System — Healthcare Project
 
+## Quick Links:
+* Find me on [LinkedIn](https://www.linkedin.com/in/divyanshsaxena/)
+* I help developer like you by writing detailed articles on Medium. Interested to read? Follow and Subscribe my Email Newsletter [Here](https://medium.com/@divyanshsaxenaofficial)
 ## 📖 Overview
 This project demonstrates a **Hospital Intelligence System** built on structured healthcare datasets (patients, admissions, treatments, notes) and integrated with **Snowflake Cortex AI Services** — including **Cortex Agents**, **Cortex Analyst**, and **Cortex Search**.
 
